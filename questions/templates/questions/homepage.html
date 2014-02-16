@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    {% for s in request.session %}
+    {{ s }}++
+    {% endfor %}
+
+    {% for q in questions %}
+    <div>
+        <fieldser>
+            <legend>{{ forloop.counter }}) {{ q }}</legend>
+            <ul>
+            {% for qa in q.answers %}
+                <label>
+                {% if q.radio_answers == True %}
+                <li><input type="radio" name="answer[{{ q.id }}]" /> {{ qa }}</li>
+                {% else %}
+                <li><input type="checkbox" name="answer[{{ q.id }}][{{ qa.id }}]" /> {{ qa }}</li>
+                {% endif %}
+                </label>
+            {% endfor %}
+            </ul>
+        </fieldser>
+    </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <title>quiz php</title>
+    <style type="text/css">
+        ul li {
+            list-style-type: none;
+        }
+        .top-menu {
+            clear: both;
+            margin-bottom: 20px;
+            overflow: hidden;
+            height: 30px;
+        }
+        .top-menu li {
+            padding-top: 3px;
+            list-style-type: none;
+            float: left;
+        }
+        .top-menu li a {
+            border: 1px solid lightseagreen;
+            color: lightseagreen;
+            text-decoration: none;
+            padding: 3px 10px;
+            margin: 0 10px 0 0;
+        }
+        .top-menu li a:hover {
+            color: lightcoral;
+            border: 1px solid lightcoral;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="top-menu">
+    <li><a href="{% url 'homepage' %}">Homepage</a></li>
+    <li><a href="{% url 'startquiz' %}">Start quiz</a></li>
+    <li><a href="">Register</a></li>
+    <li><a href="">Login</a></li>
+</ul>
+
+{% block body %}
+    no layout loaded
+{% endblock %}
+
+
+</body>
+</html>

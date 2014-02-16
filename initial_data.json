@@ -1,0 +1,198 @@
+[
+    {
+        "pk": 1,
+        "model": "questions.categories",
+        "fields": {
+            "status": 2,
+            "title": "PHP"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "questions.categories",
+        "fields": {
+            "status": 2,
+            "title": "MySQL"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "questions.questions",
+        "fields": {
+            "status": 2,
+            "category": 1,
+            "radio_answers": true,
+            "question": "In PHP 5 you can use the ________ operator to ensure that an object is o a particular type. You can also use ______ in the function declaration."
+        }
+    },
+    {
+        "pk": 2,
+        "model": "questions.questions",
+        "fields": {
+            "status": 2,
+            "category": 1,
+            "radio_answers": false,
+            "question": "Which of the following tags are an acceptable way to begin a PHP Code block?"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "questions.questions",
+        "fields": {
+            "status": 2,
+            "category": 1,
+            "radio_answers": true,
+            "question": "What is the best way to iterate and modify every element of an array using PHP 5?"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": false,
+            "question": 1,
+            "response": "instanceif, is_a"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": true,
+            "question": 1,
+            "response": "instanceof, type-hinting"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": false,
+            "question": 1,
+            "response": "type, instanceof"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": false,
+            "question": 1,
+            "response": "===, type-hinting"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": false,
+            "question": 1,
+            "response": "===, is_a"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": true,
+            "question": 2,
+            "response": "<SCRIPT LANGUAGE=\"php\">"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": false,
+            "question": 2,
+            "response": "<!"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": true,
+            "question": 2,
+            "response": "<%"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": true,
+            "question": 2,
+            "response": "<?php"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": true,
+            "question": 2,
+            "response": "<?"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": false,
+            "question": 3,
+            "response": "You cannot modify an array during iteration"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": false,
+            "question": 3,
+            "response": "for($i = 0; $i < count($array); $i++) { /* ... */ }"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": true,
+            "question": 3,
+            "response": "foreach($array as $key => &$val) { /* ... */ }"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": false,
+            "question": 3,
+            "response": "foreach($array as $key => $val) { /* ... */ }"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "questions.answers",
+        "fields": {
+            "status": 2,
+            "is_correct": false,
+            "question": 3,
+            "response": "while(list($key, $val) = each($array)) { /* ... */"
+        }
+    }
+]
