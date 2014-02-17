@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="desp-20"></div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            <h3>{{ q.question }}</h3>
+            {% if q.text != '' %}
+            <div class="bs-callout bs-callout-info">
+                <pre class="pre">{{ q.text | escape }}</pre>
+            </div>
+            {% endif %}
+            <div class="options">
+                <ol type="a">
+                    {% for qa in q.answers %}
+                        {% if q.radio_answers == True %}
+                        <li><label><input type="radio" name="answer[{{ q.id }}]" value="{{ qa.id }}" /> {{ qa }}</label></li>
+                        {% else %}
+                        <li><label><input type="checkbox" name="answer[{{ q.id }}][{{ qa.id }}]" /> {{ qa }}</label></li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <p><input type="submit" value="Answer" /></p>
+    </form>
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Categories(models.Model):
     status = models.PositiveIntegerField(max_length=1, default=2)
@@ -27,7 +28,7 @@ class Questions(models.Model):
         try:
             ans = Answers.objects.filter(question=self.pk)
         except Answers.DoesNotExist:
-            ans = []
+            ans = ['aa']
         return ans
 
     def __unicode__(self):
@@ -51,4 +52,33 @@ class Answers(models.Model):
         db_table = 'quiz_answers'
         verbose_name = 'Answer'
         verbose_name_plural = 'Answers'
+
+
+class Tests(models.Model):
+    user = models.ForeignKey(User)
+    questions = models.CommaSeparatedIntegerField(max_length=64)
+
+class Responses(models.Model):
+    test = models.ForeignKey(Tests)
+    question = models.ForeignKey(Questions)
+    answer = models.ForeignKey(Answers)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

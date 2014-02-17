@@ -22,5 +22,21 @@ def startquiz(request):
         ran = random.choice(questions)
         if ran not in que:
             que.append(ran)
-    request.session['question'] = que
-    return redirect(reverse('homepage'))
+    url = reverse('question', args=(1,))
+    return redirect(url)
+
+def question(request, id):
+    if request.method == 'POST':
+
+        print request.session
+
+        if "answer" not in request.session:
+            request.session['answer'] = []
+        print request.POST.get('answer['+id+']', '-')
+        request.session['answer'][int(id)] = int(request.POST.get('answer['+id+']', 0))
+        #return redirect(reverse('question', args=((id + 1),)))
+    que = Questions.objects.get(pk=int(id))
+    data = {
+        'q': que,
+    }
+    return render(request, 'questions/test.html', data)

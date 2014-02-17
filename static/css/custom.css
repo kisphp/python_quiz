@@ -1,0 +1,35 @@
+.desp-20 {
+    height: 20px;
+    clear: both;
+    overflow: hidden;
+    line-height: 0;
+}
+ul li {
+    list-style-type: none;
+}
+.top-menu {
+    clear: both;
+    margin-bottom: 20px;
+    overflow: hidden;
+    height: 30px;
+}
+.top-menu li {
+    padding-top: 3px;
+    list-style-type: none;
+    float: left;
+}
+.top-menu li a {
+    border: 1px solid lightseagreen;
+    color: lightseagreen;
+    text-decoration: none;
+    padding: 3px 10px;
+    margin: 0 10px 0 0;
+}
+.top-menu li a:hover {
+    color: lightcoral;
+    border: 1px solid lightcoral;
+}
+pre.pre {
+    border: 0;
+    background: transparent;
+}
