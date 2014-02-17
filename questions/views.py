@@ -1,7 +1,7 @@
 import random
 from django.shortcuts import render, HttpResponse, redirect
-from questions.models import *
 from django.core.urlresolvers import reverse
+from questions.models import *
 
 def homepage(request):
     questions = Questions.objects.all()

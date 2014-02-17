@@ -58,10 +58,26 @@ class Tests(models.Model):
     user = models.ForeignKey(User)
     questions = models.CommaSeparatedIntegerField(max_length=64)
 
+    def __unicode__(self):
+        return self.questions
+
+    class Meta:
+        db_table = 'quiz_tests'
+        verbose_name = 'Test'
+        verbose_name_plural = 'Tests'
+
 class Responses(models.Model):
     test = models.ForeignKey(Tests)
     question = models.ForeignKey(Questions)
     answer = models.ForeignKey(Answers)
+
+    def __unicode__(self):
+        return u'%s %s' % (self.question, self.answer)
+
+    class Meta:
+        db_table = 'quiz_responses'
+        verbose_name = 'Response'
+        verbose_name_plural = 'Responses'
 
 
 
