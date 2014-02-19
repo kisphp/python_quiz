@@ -56,15 +56,27 @@ class Answers(models.Model):
 
 class Tests(models.Model):
     user = models.ForeignKey(User)
-    questions = models.CommaSeparatedIntegerField(max_length=64)
+    started = models.BooleanField(default=False)
+    finished = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return self.questions
+        return "%s" % self.pk
 
     class Meta:
         db_table = 'quiz_tests'
         verbose_name = 'Test'
         verbose_name_plural = 'Tests'
+
+class TestsQuestions(models.Model):
+    test = models.ForeignKey(Tests)
+    question = models.ForeignKey(Questions)
+
+    class Meta:
+        db_table = 'quiz_test_questions'
+        index_together = [
+            ['test', 'question']
+        ]
+
 
 class Responses(models.Model):
     test = models.ForeignKey(Tests)

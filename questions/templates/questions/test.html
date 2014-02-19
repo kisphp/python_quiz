@@ -5,8 +5,8 @@
     <form action="" method="post">
         {% csrf_token %}
         <div>
-            <h3>{{ q.question }}</h3>
-            {% if q.text != '' %}
+            <p class="lead">{{ step }}) {{ q.question }}</p>
+            {% if q.text != ' ' %}
             <div class="bs-callout bs-callout-info">
                 <pre class="pre">{{ q.text | escape }}</pre>
             </div>
@@ -15,9 +15,9 @@
                 <ol type="a">
                     {% for qa in q.answers %}
                         {% if q.radio_answers == True %}
-                        <li><label><input type="radio" name="answer[{{ q.id }}]" value="{{ qa.id }}" /> {{ qa }}</label></li>
+                        <li><label><input type="radio" name="answer" value="{{ qa.id }}" /> {{ qa }}</label></li>
                         {% else %}
-                        <li><label><input type="checkbox" name="answer[{{ q.id }}][{{ qa.id }}]" /> {{ qa }}</label></li>
+                        <li><label><input type="checkbox" name="answer[{{ qa.id }}]" /> {{ qa }}</label></li>
                         {% endif %}
                     {% endfor %}
                 </ol>
