@@ -17,7 +17,7 @@
                         {% if q.radio_answers == True %}
                         <li><label><input type="radio" name="answer" value="{{ qa.id }}" /> {{ qa }}</label></li>
                         {% else %}
-                        <li><label><input type="checkbox" name="answer[{{ qa.id }}]" /> {{ qa }}</label></li>
+                        <li><label><input type="checkbox" name="answer" value="{{ qa.id }}" /> {{ qa }}</label></li>
                         {% endif %}
                     {% endfor %}
                 </ol>

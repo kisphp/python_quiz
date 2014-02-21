@@ -1,0 +1,30 @@
+Categories:
+    status
+    title
+
+Questions:
+    status
+    category
+    radio_answers
+    question
+    text
+
+Answers:
+    status
+    question
+    is_correct
+    response
+
+Tests:
+    user
+    started
+    finished
+
+TestsQuestions:
+    test
+    question
+
+Responses:
+    test
+    question
+    answer
