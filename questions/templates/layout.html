@@ -3,25 +3,54 @@
 <head>
     <title>quiz php</title>
 {% load staticfiles %}
+    {% block css %}
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="{% static "css/doc.css" %}" rel="stylesheet">
     <link href="{% static "css/style.css" %}" rel="stylesheet">
     <link href="{% static "css/custom.css" %}" rel="stylesheet">
-
+    {% endblock %}
 </head>
 <body>
 
-<div class="blog-masthead">
-  <div class="container">
-    <nav class="blog-nav">
-      <a class="blog-nav-item active" href="{% url 'homepage' %}">Homepage</a>
-      <a class="blog-nav-item" href="{% url 'startquiz' %}">Start quiz</a>
-    </nav>
-  </div>
-</div>
+{% block top-menu %}
+<div role="navigation" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="{% url 'homepage' %}" class="navbar-brand">Performance Test</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="blog-nav-item" href="{% url 'startquiz' %}">Start quiz</a></li>
+            {% comment %}
+              <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            {% endcomment %}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+{% endblock %}
 
 <div class="container">
-
     {% block body %}
         no layout loaded
     {% endblock %}

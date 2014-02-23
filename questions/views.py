@@ -2,9 +2,13 @@ import random
 from django.shortcuts import render, HttpResponse, redirect
 from django.core.urlresolvers import reverse
 from questions.models import *
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 MAX_QUESTIONS = 3
 
+
+@login_required(login_url='/login')
 def homepage(request):
     questions = Questions.objects.all()
     try:
@@ -20,7 +24,8 @@ def homepage(request):
 def startquiz(request):
     all_questions = Questions.objects.values_list('id', flat=True).all()
     que = []
-    del(request.session['step'])
+    if 'step' in request.session:
+        del(request.session['step'])
     while (len(que) < MAX_QUESTIONS):
         ran = random.choice(all_questions)
         if ran not in que:
@@ -35,6 +40,12 @@ def startquiz(request):
     url = reverse('question', args=(test.pk,))
     return redirect(url)
 
+def finish(request):
+    return render(request, 'questions/finish.html')
+
+
+
+#@login_required(login_url=reverse('homepage'))
 def question(request, id):
     if 'step' not in request.session:
         request.session['step'] = 0
@@ -50,26 +61,20 @@ def question(request, id):
         if request.session['step'] > MAX_QUESTIONS:
             return redirect(reverse('homepage'))
 
-        print test_questions[request.session['step']].question
+        if int(request.session['step']) >= len(test_questions):
+            return redirect(reverse('finish'))
 
         current_question = test_questions[request.session['step']].question
 
         for quest in request.POST.getlist('answer'):
             print quest
+            answer = Answers.objects.get(pk=int(quest))
 
-        #answer_id = int(request.POST.get('answer', 0))
-        #print answer_id
-        #answer = Answers.objects.get(pk=int(answer_id))
-
-        #print "Answer id: %s" % answer_id
-
-        # r = Responses()
-        # r.test = test
-        # r.question = current_question
-        # r.answer = answer
-        # r.save()
-
-
+            r = Responses()
+            r.test = test
+            r.question = current_question
+            r.answer = answer
+            r.save()
 
         return redirect(reverse('question', args=(id,)))
 
